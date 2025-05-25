@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gundu Pradeep - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+        #background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(0.4);
+        }
+        .section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem;
+            position: relative;
+        }
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.5), transparent);
+        }
+        .navbar {
+            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.4);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .card {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            color: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.5);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: #3B82F6;
+            border-radius: 2px;
+        }
+        .project-card {
+            transition: all 0.3s ease;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 1rem;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.5);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+        .skill-card {
+            transition: all 0.3s ease;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .skill-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+        .edu-card {
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .edu-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-left: 3px solid #3B82F6;
+            transform: translateX(5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+        .achievement-card {
+            transition: all 0.3s ease;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+        .certification-card {
+            transition: all 0.3s ease;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .certification-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+        .contact-card {
+            transition: all 0.3s ease;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .contact-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+        .btn-primary {
+            background: #3B82F6;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+        .btn-primary:hover {
+            background: #2563EB;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        .social-icon {
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .social-icon:hover {
+            background: #3B82F6;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+        .form-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        .form-input:focus {
+            border-color: #3B82F6;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+            outline: none;
+        }
+     
+        .footer {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeIn {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        
+        /* Responsive Design Enhancements */
+        @media (max-width: 1024px) {
+            .section {
+                padding: 4rem 1.5rem;
+            }
+            .card {
+                padding: 2rem;
+            }
+            .profile-image-container img {
+                width: 200px;
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 3rem 1rem;
+            }
+            .card {
+                padding: 1.5rem;
+            }
+            .profile-image-container img {
+                width: 180px;
+                height: 180px;
+            }
+            .grid {
+                gap: 1rem;
+            }
+            .btn-primary, .btn-secondary {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .contact-card {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .section {
+                padding: 2rem 1rem;
+            }
+            .card {
+                padding: 1.25rem;
+            }
+            .profile-image-container img {
+                width: 150px;
+                height: 150px;
+            }
+            .grid {
+                gap: 0.75rem;
+            }
+            .btn-primary, .btn-secondary {
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+            .contact-card {
+                padding: 0.75rem;
+            }
+            .social-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Mobile Navigation */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 50;
+            padding: 2rem;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .mobile-menu ul {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .mobile-menu a {
+            color: white;
+            font-size: 1.2rem;
+            padding: 0.5rem 0;
+            display: block;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        #resume-view{
+            color: #3B82F6;
+        }
+        .resume-icon{
+            color: #3B82F6;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+        }
+
+        /* Responsive Typography */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.75rem; }
+            h3 { font-size: 1.5rem; }
+            p { font-size: 0.95rem; }
+        }
+
+        @media (max-width: 640px) {
+            h1 { font-size: 1.75rem; }
+            h2 { font-size: 1.5rem; }
+            h3 { font-size: 1.25rem; }
+            p { font-size: 0.9rem; }
+        }
+
+        /* Responsive Grid Layouts */
+        @media (max-width: 768px) {
+            .grid-cols-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .grid-cols-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .grid-cols-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Responsive Images */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Responsive Form Elements */
+        @media (max-width: 768px) {
+            .form-input {
+                padding: 0.6rem 0.8rem;
+                font-size: 0.95rem;
+            }
+            textarea.form-input {
+                min-height: 100px;
+            }
+        }
+
+        /* Responsive Footer */
+        @media (max-width: 768px) {
+            .footer {
+                padding: 2rem 1rem;
+            }
+            .footer-section {
+                text-align: center;
+            }
+            .footer .social-icon {
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body class="text-gray-800 font-sans">
+    <video autoplay muted loop id="background-video">
+        <source src="https://cdn.pixabay.com/video/2023/12/10/192779-893446888_tiny.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Social Media Sidebar -->
+    <div class="social-sidebar">
+        <a href="https://www.linkedin.com/in/gundu-pradeep-8abba2322/" target="_blank" class="social-icon" title="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://github.com/Pradeep200517" target="_blank" class="social-icon" title="GitHub">
+            <i class="fab fa-github"></i>
+        </a>
+    </div>
+
+    <!-- Add Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-close">
+            <i class="fas fa-times"></i>
+        </div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Update Navigation -->
+    <nav class="navbar fixed top-0 w-full z-10">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center">
+                        <span class="text-white font-bold text-xl">GP</span>
+                    </div>
+                    <h1 class="text-white text-2xl font-bold">Gundu Pradeep</h1>
+                </div>
+                <ul class="hidden md:flex space-x-8">
+                    <li><a href="#home" class="text-white hover:text-blue-400 transition-colors duration-300">Home</a></li>
+                    <li><a href="#education" class="text-white hover:text-blue-400 transition-colors duration-300">Education</a></li>
+                    <li><a href="#skills" class="text-white hover:text-blue-400 transition-colors duration-300">Skills</a></li>
+                    <li><a href="#projects" class="text-white hover:text-blue-400 transition-colors duration-300">Projects</a></li>
+                    <li><a href="#achievements" class="text-white hover:text-blue-400 transition-colors duration-300">Achievements</a></li>
+                    <li><a href="#certifications" class="text-white hover:text-blue-400 transition-colors duration-300">Certifications</a></li>
+                    <li><a href="#contact" class="text-white hover:text-blue-400 transition-colors duration-300">Contact</a></li>
+                </ul>
+                <button class="md:hidden text-white focus:outline-none mobile-menu-toggle">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="section">
+        <div class="card max-w-4xl w-full animate-fadeIn">
+            <div class="flex flex-col md:flex-row items-center gap-8 px-4">
+                <div class="profile-image-container md:w-1/3">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-blue-500 rounded-full blur-xl opacity-20"></div>
+                        <img src="https://drive.google.com/file/d/1Me8_EnvdryM9J6AzqBPtFew7J2808O5i/view?usp=sharing" 
+                             alt="Gundu Pradeep" 
+                             class="w-64 h-64 rounded-full object-cover border-4 border-blue-500 relative z-10 mx-auto">
+                    </div>
+                </div>
+                <div class="profile-content md:w-2/3 text-center md:text-left">
+                    <h2 class="text-4xl font-bold mb-4">Welcome to My Portfolio</h2>
+                    <h3 class="text-2xl text-blue-400 mb-4">Gundu Pradeep</h3>
+                    <p class="text-lg mb-6 text-gray-300">A passionate Computer Science Engineering student specializing in Java, Python, and web development. I create innovative and scalable solutions to drive progress.</p>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                        <a href="#contact" class="btn-primary flex items-center space-x-2">
+                            <i class="fas fa-envelope"></i>
+                            <span>Get in Touch</span>
+                        </a>
+                        <a href="#projects" class="btn-secondary flex items-center space-x-2">
+                            <i class="fas fa-code"></i>
+                            <span>View Projects</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Options Section -->
+    <section class="py-12">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="resume-option p-8 rounded-lg text-center">
+                    <div class="resume-icon">
+                        <i class="fas fa-file-download"></i>
+                    </div>
+                    <h3 class="text-xl  mb-3" id="resume-view">Download Resume</h3>
+                    <p class="mb-4 text-gray-300">Get a PDF copy of my professional resume</p>
+                    <button class="bg-gray-700 hover:bg-gray-600 text-white px-6 py-2 rounded-full transition duration-300">
+                        Download PDF
+                    </button>
+                </div>
+                <div class="resume-option p-8 rounded-lg text-center">
+                    <div class="resume-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3 class="text-xl mb-3" id="resume-view">View Resume</h3>
+                    <p class="mb-4 text-gray-300">Preview my resume in your browser</p>
+                    <button class="bg-gray-700 hover:bg-gray-600 text-white px-6 py-2 rounded-full transition duration-300">
+                        View Online
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="section">
+        <div class="card max-w-4xl">
+            <h2 class="text-3xl font-bold mb-6 text-center">Education</h2>
+            <div class="space-y-4">
+                <div class="edu-card p-6 rounded-lg cursor-pointer">
+                    <div class="flex items-start">
+                        <div class="mr-4 text-blue-400">
+                            <i class="fas fa-university text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold">Vasavi College of Engineering, Hyderabad</h3>
+                            <p class="text-gray-300">Bachelor of Engineering – Computer Science Engineering | 2023 - 2027</p>
+                            <p class="text-gray-300">CGPA: 7.46 (Pursuing 2nd Year)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="edu-card p-6 rounded-lg cursor-pointer">
+                    <div class="flex items-start">
+                        <div class="mr-4 text-blue-400">
+                            <i class="fas fa-school text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold">Sri Chaitanya Junior College, Madhapur</h3>
+                            <p class="text-gray-300">Telangana State Board of Intermediate Education | 2021 - 2023</p>
+                            <p class="text-gray-300">CGPA: 95.6</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="edu-card p-6 rounded-lg cursor-pointer">
+                    <div class="flex items-start">
+                        <div class="mr-4 text-blue-400">
+                            <i class="fas fa-graduation-cap text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold">Ekalavya Foundation School, Nalgonda</h3>
+                            <p class="text-gray-300">State Board of Secondary Education | 2019 - 2021</p>
+                            <p class="text-gray-300">Grade: 10</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section">
+        <div class="card max-w-4xl">
+            <h2 class="text-3xl font-bold mb-6 text-center">Skills</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                <div class="skill-card text-center">
+                    <i class="fab fa-java skill-icon text-orange-500"></i>
+                    <h3 class="text-xl font-semibold">Java</h3>
+                </div>
+                <div class="skill-card text-center">
+                    <i class="fab fa-python skill-icon text-blue-500"></i>
+                    <h3 class="text-xl font-semibold">Python</h3>
+                </div>
+                <div class="skill-card text-center">
+                    <i class="fas fa-code skill-icon text-gray-400"></i>
+                    <h3 class="text-xl font-semibold">C</h3>
+                </div>
+                <div class="skill-card text-center">
+                    <i class="fab fa-html5 skill-icon text-orange-400"></i>
+                    <h3 class="text-xl font-semibold">HTML</h3>
+                </div>
+                <div class="skill-card text-center">
+                    <i class="fab fa-css3-alt skill-icon text-blue-400"></i>
+                    <h3 class="text-xl font-semibold">CSS</h3>
+                </div>
+                <div class="skill-card text-center">
+                    <i class="fab fa-js skill-icon text-yellow-400"></i>
+                    <h3 class="text-xl font-semibold">JavaScript</h3>
+                </div>
+                <div class="skill-card text-center">
+                    <i class="fas fa-database skill-icon text-blue-300"></i>
+                    <h3 class="text-xl font-semibold">SQL</h3>
+                </div>
+                <div class="skill-card text-center">
+                    <i class="fas fa-robot skill-icon text-purple-400"></i>
+                    <h3 class="text-xl font-semibold">Machine Learning</h3>
+                </div>
+                <div class="skill-card text-center">
+                    <i class="fas fa-users skill-icon text-green-400"></i>
+                    <h3 class="text-xl font-semibold">Soft Skills</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <div class="card max-w-4xl">
+            <h2 class="text-3xl font-bold mb-6 text-center">Projects</h2>
+            <div class="space-y-8">
+                <div class="project-card bg-gray-800 bg-opacity-50 p-6 rounded-lg">
+                    <div class="flex flex-col md:flex-row gap-6">
+                        <div class="md:w-1/3">
+                            <img src="https://tse2.mm.bing.net/th?id=OIP.r17Wi8nlpI8PdHVkG4S5RAHaE5&pid=Api&P=0&h=180" alt="AutoSage App" class="w-full h-auto rounded-lg object-cover">
+                        </div>
+                        <div class="md:w-2/3">
+                            <h3 class="text-xl font-semibold mb-2">AutoSage App</h3>
+                            <p class="mb-4">AI-powered vehicle expert tool using Gemini Flash technology for real-time updates on two-wheelers and four-wheelers, offering specs, reviews, and comparisons.</p>
+                            <p class="mb-4"><strong>Tech Stack:</strong> HTML, CSS, JavaScript</p>
+                            <div class="flex space-x-4">
+                                <a href="#" class="inline-block bg-gray-700 text-white px-4 py-2 rounded hover:bg-gray-600 transition duration-300">
+                                    <i class="fab fa-github mr-2"></i>View Source
+                                </a>
+                                <a href="https://pradeep200517.github.io/AutoSage-App-Using-Gemini-Flash/" target="_blank" class="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300">
+                                    <i class="fas fa-external-link-alt mr-2"></i>Demo Link
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card bg-gray-800 bg-opacity-50 p-6 rounded-lg">
+                    <div class="flex flex-col md:flex-row gap-6">
+                        <div class="md:w-1/3">
+                            <img src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?q=80&w=1000" alt="Social Media App" class="w-full h-auto rounded-lg object-cover">
+                        </div>
+                        <div class="md:w-2/3">
+                            <h3 class="text-xl font-semibold mb-2">Social Media Application</h3>
+                            <p class="mb-4">Manages user interactions like posts and comments, with error handling for Input Mismatch Exception.</p>
+                            <p class="mb-4"><strong>Tech Stack:</strong> Java, OOP, Files</p>
+                            <a href="#" class="inline-block bg-gray-700 text-white px-4 py-2 rounded hover:bg-gray-600 transition duration-300">
+                                <i class="fab fa-github mr-2"></i>View Source
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card bg-gray-800 bg-opacity-50 p-6 rounded-lg">
+                    <div class="flex flex-col md:flex-row gap-6">
+                        <div class="md:w-1/3">
+                            <img src="https://images.unsplash.com/photo-1558002038-1055907df827?q=80&w=1000" alt="Smart Home" class="w-full h-auto rounded-lg object-cover">
+                        </div>
+                        <div class="md:w-2/3">
+                            <h3 class="text-xl font-semibold mb-2">Smart Home (Web Interface)</h3>
+                            <p class="mb-4">Enables device control (toggle on/off), scheduling, and managing schedules in an interactive UI.</p>
+                            <p class="mb-4"><strong>Tech Stack:</strong> HTML, CSS, JavaScript</p>
+                            <div class="flex space-x-4">
+                                <a href="#" class="inline-block bg-gray-700 text-white px-4 py-2 rounded hover:bg-gray-600 transition duration-300">
+                                    <i class="fab fa-github mr-2"></i>View Source
+                                </a>
+                                <a href="https://moonlit-moonbeam-32147f.netlify.app/" target="_blank" class="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300">
+                                    <i class="fas fa-external-link-alt mr-2"></i>Demo Link
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card bg-gray-800 bg-opacity-50 p-6 rounded-lg">
+                    <div class="flex flex-col md:flex-row gap-6">
+                        <div class="md:w-1/3">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000" alt="Recommendation System" class="w-full h-auto rounded-lg object-cover">
+                        </div>
+                        <div class="md:w-2/3">
+                            <h3 class="text-xl font-semibold mb-2">Advanced Recommendation System</h3>
+                            <p class="mb-4">Manages and presents personalized suggestions using console-based operations.</p>
+                            <p class="mb-4"><strong>Tech Stack:</strong> File Handling, Console-based Operations</p>
+                            <a href="#" class="inline-block bg-gray-700 text-white px-4 py-2 rounded hover:bg-gray-600 transition duration-300">
+                                <i class="fab fa-github mr-2"></i>View Source
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="achievements" class="section">
+        <div class="card max-w-4xl">
+            <h2 class="text-3xl font-bold mb-6 text-center">Achievements</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="achievement-card flex items-start space-x-4 p-4 rounded-lg transition-all duration-300 hover:bg-gray-800 hover:transform hover:scale-105">
+                    <i class="fas fa-trophy text-3xl text-yellow-400 mt-1"></i>
+                    <div>
+                        <h3 class="text-xl font-semibold">SIH Finalist 2024</h3>
+                        <p>Selected as finalist in the prestigious Smart India Hackathon competition.</p>
+                    </div>
+                </div>
+                <div class="achievement-card flex items-start space-x-4 p-4 rounded-lg transition-all duration-300 hover:bg-gray-800 hover:transform hover:scale-105">
+                    <i class="fas fa-medal text-3xl text-gold-400 mt-1"></i>
+                    <div>
+                        <h3 class="text-xl font-semibold">GenAI Hackathon Winner 2025</h3>
+                        <p>Won the GenAI Hackathon conducted by SmartBridge, NASSCOM, and FutureSkills Prime.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications" class="section">
+        <div class="card max-w-4xl">
+            <h2 class="text-3xl font-bold mb-6 text-center">Certifications</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="certification-card flex items-start space-x-4">
+                    <i class="fas fa-certificate text-3xl text-blue-400 mt-1"></i>
+                    <div>
+                        <h3 class="text-xl font-semibold">Infosys Springboard</h3>
+                        <p>Java, Python, Machine Learning Foundation Certifications</p>
+                    </div>
+                </div>
+                <div class="certification-card flex items-start space-x-4">
+                    <i class="fas fa-certificate text-3xl text-blue-400 mt-1"></i>
+                    <div>
+                        <h3 class="text-xl font-semibold">Cisco</h3>
+                        <p>Programming Essentials in C Certification</p>
+                    </div>
+                </div>
+                <div class="certification-card flex items-start space-x-4">
+                    <i class="fas fa-certificate text-3xl text-blue-400 mt-1"></i>
+                    <div>
+                        <h3 class="text-xl font-semibold">HackerRank</h3>
+                        <p>Python, Problem Solving, CSS, Java Certificates</p>
+                    </div>
+                </div>
+                <div class="certification-card flex items-start space-x-4">
+                    <i class="fas fa-certificate text-3xl text-blue-400 mt-1"></i>
+                    <div>
+                        <h3 class="text-xl font-semibold">CodeChef</h3>
+                        <p>Linked List Certifications</p>
+                    </div>
+                </div>
+                <div class="certification-card flex items-start space-x-4">
+                    <i class="fas fa-certificate text-3xl text-blue-400 mt-1"></i>
+                    <div>
+                        <h3 class="text-xl font-semibold">FreeCodeCamp</h3>
+                        <p>Responsive Web Design Certification</p>
+                    </div>
+                </div>
+                <div class="certification-card flex items-start space-x-4">
+                    <i class="fas fa-certificate text-3xl text-blue-400 mt-1"></i>
+                    <div>
+                        <h3 class="text-xl font-semibold">TCS iON</h3>
+                        <p>Career Edge Young Professional Certificate</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="card max-w-4xl w-full">
+            <h2 class="text-3xl font-bold mb-8 text-center section-title">Get In Touch</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+                <div class="contact-info">
+                    <h3 class="text-2xl font-semibold mb-6 text-blue-400">Contact Information</h3>
+                    <div class="space-y-6">
+                        <div class="contact-card flex items-center space-x-4">
+                            <div class="icon-wrapper bg-blue-600 bg-opacity-20 p-3 rounded-full">
+                                <i class="fas fa-envelope text-2xl text-blue-400"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-300 text-sm">Email</p>
+                                <a href="mailto:gundupradeep@gmail.com" class="text-white hover:text-blue-400 transition-colors">gundupradeep@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-card flex items-center space-x-4">
+                            <div class="icon-wrapper bg-blue-600 bg-opacity-20 p-3 rounded-full">
+                                <i class="fas fa-phone text-2xl text-blue-400"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-300 text-sm">Phone</p>
+                                <a href="tel:+919014402965" class="text-white hover:text-blue-400 transition-colors">+91 9014402965</a>
+                            </div>
+                        </div>
+                        <div class="contact-card flex items-center space-x-4">
+                            <div class="icon-wrapper bg-blue-600 bg-opacity-20 p-3 rounded-full">
+                                <i class="fab fa-linkedin text-2xl text-blue-400"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-300 text-sm">LinkedIn</p>
+                                <a href="https://www.linkedin.com/in/gundu-pradeep-8abba2322/" target="_blank" class="text-white hover:text-blue-400 transition-colors">GunduPradeep</a>
+                            </div>
+                        </div>
+                        <div class="contact-card flex items-center space-x-4">
+                            <div class="icon-wrapper bg-blue-600 bg-opacity-20 p-3 rounded-full">
+                                <i class="fab fa-github text-2xl text-blue-400"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-300 text-sm">GitHub</p>
+                                <a href="https://github.com/Pradeep200517" target="_blank" class="text-white hover:text-blue-400 transition-colors">GunduPradeep</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3 class="text-2xl font-semibold mb-6 text-blue-400">Send Me a Message</h3>
+                    <form class="space-y-4">
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" class="form-input w-full">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" class="form-input w-full">
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Your Message" rows="4" class="form-input w-full"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary w-full flex items-center justify-center space-x-2">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>Send Message</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer py-12">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="footer-section">
+                    <h3 class="text-xl font-semibold mb-4 text-blue-400">Gundu Pradeep</h3>
+                    <p class="text-gray-400">A passionate Computer Science Engineering student specializing in Java, Python, and web development.</p>
+                </div>
+                <div class="footer-section">
+                    <h3 class="text-xl font-semibold mb-4 text-blue-400">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-blue-400 transition-colors">Home</a></li>
+                        <li><a href="#education" class="text-gray-400 hover:text-blue-400 transition-colors">Education</a></li>
+                        <li><a href="#skills" class="text-gray-400 hover:text-blue-400 transition-colors">Skills</a></li>
+                        <li><a href="#projects" class="text-gray-400 hover:text-blue-400 transition-colors">Projects</a></li>
+                        <li><a href="#achievements" class="text-gray-400 hover:text-blue-400 transition-colors">Achievements</a></li>
+                        <li><a href="#certifications" class="text-gray-400 hover:text-blue-400 transition-colors">Certifications</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 class="text-xl font-semibold mb-4 text-blue-400">Connect With Me</h3>
+                    <div class="flex space-x-4">
+                        <a href="https://www.linkedin.com/in/gundu-pradeep-8abba2322/" target="_blank" class="social-icon p-3 rounded-full">
+                            <i class="fab fa-linkedin-in text-xl"></i>
+                        </a>
+                        <a href="https://github.com/Pradeep200517" target="_blank" class="social-icon p-3 rounded-full">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="mailto:gundupradeep@gmail.com" class="social-icon p-3 rounded-full">
+                            <i class="fas fa-envelope text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400">© 2025 Gundu Pradeep. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Replace these with your actual URLs
+        const resumePdfUrl = "path/to/your/resume.pdf";
+        const resumeViewUrl = "https://docs.google.com/document/d/1UBZGmWaZ9dhsCbo3kAxCJD0fMdwLi9qu/edit?usp=sharing&ouid=108104958065945940447&rtpof=true&sd=true";
+        
+        // Set up resume buttons
+        document.querySelectorAll('.resume-option button')[0].addEventListener('click', function() {
+            // Download PDF
+            window.open(resumePdfUrl, '_blank');
+        });
+        
+        document.querySelectorAll('.resume-option button')[1].addEventListener('click', function() {
+            // View online
+            window.open(resumeViewUrl, '_blank');
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const mobileMenuClose = document.querySelector('.mobile-menu-close');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu a');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+        });
+
+        mobileMenuClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+        });
+
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Smooth scroll for mobile menu
+        document.querySelectorAll('.mobile-menu a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
